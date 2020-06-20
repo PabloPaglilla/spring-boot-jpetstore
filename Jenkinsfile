@@ -13,15 +13,21 @@ pipeline {
       }
     }
 
+    stage('Analyze') {
+      steps {
+        sh './gradlew -Dsonarqube.host.url=http://sonarqube-grupo1:9000 sonarqube'
+      }
+    }
+
     stage('Validate') {
       steps {
-        sh 'ls'
+        sh 'true'
       }
     }
 
     stage('Deploy') {
       steps {
-        sh 'ls'
+        sh 'true'
       }
     }
 

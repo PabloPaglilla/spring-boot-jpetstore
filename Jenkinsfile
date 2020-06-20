@@ -15,7 +15,7 @@ pipeline {
 
     stage('Analyze') {
       steps {
-        sh './gradlew -Dsonarqube.host.url=http://sonarqube-grupo1:9000 sonarqube'
+        sh 'true'
       }
     }
 

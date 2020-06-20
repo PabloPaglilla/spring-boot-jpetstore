@@ -1,6 +1,7 @@
 plugins {
     id "java"
     id "org.sonarqube" version "3.0"
+    id 'jacoco'
     id "com.diffplug.eclipse.apt" version '3.22.0'
     id "com.diffplug.gradle.spotless" version "4.0.1"
     id "org.springframework.boot" version "1.5.22.RELEASE"
@@ -61,5 +62,19 @@ eclipse {
     }
     jdt {
         javaRuntimeName = 'JavaSE-11'
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
     }
 }
